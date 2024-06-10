@@ -1,9 +1,8 @@
-line = input('Enter sequence of number: ')
-numb = [int(n) for n in line.split()]
+line = input('Enter sequence of number (e.g. 0,-3,4,-5): ')
+numb = [int(n) for n in line.split(',')]
 pos_number = []
 
 for i in numb:
-    #print(i)
     if i > 0:
         pos_number.append(i)
 
