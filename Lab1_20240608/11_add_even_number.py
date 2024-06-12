@@ -1,4 +1,4 @@
-line = input('Enter sequence of number (e.g. 0,3,4,5): ')
+line = input('Enter the set of number (e.g. 0,3,4,5): ')
 numb = [int(n) for n in line.split(',')]
 sum_even = 0
 

@@ -3,8 +3,8 @@ print(person)
 personLst = []
 personLst.append(person)
 
-input = input('Enter Personal id name birth: ')
-inputLst = [data for data in input.split()]
+input = input('Enter the personal - id name birth (e.g. 2,aom,24/10/2001): ')
+inputLst = [data for data in input.split(',')]
 inputDict = {}
 inputDict['id'] = int(inputLst[0])
 inputDict['name'] = inputLst[1]

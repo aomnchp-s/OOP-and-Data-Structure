@@ -1,4 +1,4 @@
-year = int(input('Input year to check Leap Year: '))
+year = int(input('Input year to check the Leap Year: '))
 leabYear = year%4
 
 if year%4 == 0 and year%400 == 0 :
