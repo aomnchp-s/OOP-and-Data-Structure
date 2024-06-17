@@ -15,6 +15,8 @@ def playgame():
 
     if person1 > person2:
         print('Person1 Win !!!')
+    elif person1 == person2:
+        print('Draw !!!')
     else:
         print('Person2 Win !!!')
 
