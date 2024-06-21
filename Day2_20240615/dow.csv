@@ -1,11 +1,11 @@
 company,dividend,eps,exchange,industry,price_begin,price_end,symbol
 Apple Inc.,3.28,12.73,NasdaqGS,Consumer Electronics,154.79,290.04,AAPL
 American Express Company,1.72,6.63,NYSE,Credit Services,93.45,123.19,AXP
-The Boeing Company,,-6.03,NYSE,Aerospace & Defense,314.65,324.47,BA
+The Boeing Company,1,-6.03,NYSE,Aerospace & Defense,314.65,324.47,BA
 Caterpillar Inc.,4.12,9.46,NYSE,Farm & Heavy Construction Machinery,120.93,145.16,CAT
 CSCO,1.44,2.52,NasdaqGS,Communication Equipment,41.08,46.8,CSCO
 Chevron Corporation,5.16,2.06,NYSE,Oil & Gas Integrated,103.62,116.75,CVX
-The Walt Disney Company,,2.97,NYSE,Entertainment,107.65,143.77,DIS
+The Walt Disney Company,1,2.97,NYSE,Entertainment,107.65,143.77,DIS
 Dow Inc.,2.8,-2.27,NYSE,Chemicals,49.26,52.52,DOW
 "The Goldman Sachs Group, Inc.",5,18.47,NYSE,Capital Markets,166.49,226.98,GS
 HD,6,10.07,NYSE,Home Improvement Retail,165.73,214.58,HD
