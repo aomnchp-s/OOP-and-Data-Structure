@@ -3,8 +3,8 @@ def sqrange(n):
         yield i**2
 
 def main():
-    for s in sqrange(10):
-        print(s, end=',')
+    returns = [r for r in sqrange(10)]
+    print(f'Resturn: {returns}')
 
 if __name__ == '__main__':
     main()

@@ -10,8 +10,8 @@ def powerball(start: int, end: int):
 def main():
     whiteB = [w for w in whitballs(1, 60)]
     powerB = [p for p in powerball(1, 35)]
-    print(whiteB)
-    print(powerB)
+    print(f'White Balls: {whiteB}')
+    print(f'Powerball: {powerB}' )
 
 if __name__ == '__main__':
     main()

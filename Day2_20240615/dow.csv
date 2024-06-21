@@ -1,0 +1,31 @@
+company,dividend,eps,exchange,industry,price_begin,price_end,symbol
+Apple Inc.,3.28,12.73,NasdaqGS,Consumer Electronics,154.79,290.04,AAPL
+American Express Company,1.72,6.63,NYSE,Credit Services,93.45,123.19,AXP
+The Boeing Company,,-6.03,NYSE,Aerospace & Defense,314.65,324.47,BA
+Caterpillar Inc.,4.12,9.46,NYSE,Farm & Heavy Construction Machinery,120.93,145.16,CAT
+CSCO,1.44,2.52,NasdaqGS,Communication Equipment,41.08,46.8,CSCO
+Chevron Corporation,5.16,2.06,NYSE,Oil & Gas Integrated,103.62,116.75,CVX
+The Walt Disney Company,,2.97,NYSE,Entertainment,107.65,143.77,DIS
+Dow Inc.,2.8,-2.27,NYSE,Chemicals,49.26,52.52,DOW
+"The Goldman Sachs Group, Inc.",5,18.47,NYSE,Capital Markets,166.49,226.98,GS
+HD,6,10.07,NYSE,Home Improvement Retail,165.73,214.58,HD
+International Business Machines Corporation,6.52,10.1,NYSE,Information Technology Services,107.36,129.7,IBM
+Intel Corporation,1.32,5.16,NasdaqGS,Semiconductors,45.45,58.99,INTC
+Johnson & Johnson,4.04,6.41,NYSE,Drug Manufacturers—General,122.61,143.39,JNJ
+JPMorgan Chase & Co.,3.6,8.9,NYSE,Banks—Diversified,94.7,136.33,JPM
+The Coca-Cola Company,1.64,2.32,NYSE,Beverages—Non-Alcoholic,44.69,54.3,KO
+McDonald's Corporation,5,7.64,NYSE,Restaurants,169.71,194.39,MCD
+3M Company,5.88,8.52,NYSE,Specialty Industrial Machinery,181.27,172.54,MMM
+"Merck & Co., Inc.",2.44,3.94,NYSE,Drug Manufacturers—General,72.41,89.57,MRK
+Microsoft Corporation,2.04,6,NasdaqGS,Software—Infrastructure,99.1,156.72,MSFT
+"NIKE, Inc.",0.98,2.71,NYSE,Footwear & Accessories,72.9,100.27,NKE
+Pfizer Inc.,1.52,2.8,NYSE,Drug Manufacturers—General,40.87,38.14,PFE
+PG,3.16,1.86,NYSE,Household & Personal Products,87.67,122.92,PG
+RTX,1.9,0,NYSE,Aerospace & Defense,65.56,93.05,RTX
+"The Travelers Companies, Inc.",3.4,9.25,NYSE,Insurance—Property & Casualty,113.21,134.69,TRV
+UNH,5,14.29,NYSE,Healthcare Plans,238.41,292.58,UNH
+Visa Inc.,1.2,5.56,NYSE,Credit Services,131.66,187.24,V
+VZ,2.46,4.43,NYSE,Telecom Services,52.63,59.93,VZ
+"Walgreens Boots Alliance, Inc.",1.83,3.89,NasdaqGS,Pharmaceutical Retailers,64.66,57.74,WBA
+Walmart Inc.,2.16,5.26,NYSE,Discount Stores,90.69,118.35,WMT
+Exxon Mobil Corporation,3.48,2.66,NYSE,Oil & Gas Integrated,64.32,67.19,XOM
