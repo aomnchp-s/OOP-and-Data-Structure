@@ -24,7 +24,5 @@ def main():
     for i in x[0:10]:
         print(f'{i[0]:40} {i[1]:30} {i[2]:.2f}')
    
-    
-    
 if __name__=='__main__':
     main()
