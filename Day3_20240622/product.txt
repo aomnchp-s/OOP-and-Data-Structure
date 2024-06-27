@@ -1,0 +1,5 @@
+description,quantity,price per,unit
+Samsung Galaxy S7,2,15990.00
+iPhon,3,26500.00
+Apple Watch,1,10500.00
+HP Notebook,4,20400.00
