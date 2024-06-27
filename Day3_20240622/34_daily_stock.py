@@ -22,10 +22,10 @@ def cal_daily_return(data:dict[str]) -> None:
     return result
 
 def display_result(daily_return) -> None:
-    print(f'{"Date":15} {"Open":15} {"High":15} {"Low":15} {"Close":20} {"Volume":20} {"Adj Close":20} {"Daily Return"}')
-    print('-'*135)
+    print(f'{"Date":15} {"Open":15} {"High":15} {"Low":15} {"Close":15} {"Volume":15} {"Adj Close":15} {"Daily Return"}')
+    print('-'*127)
     for i in daily_return:
-        print(f'{i[0]:15} {i[1]:15} {i[2]:15} {i[3]:15} {i[4]:20} {i[5]:20} {i[6]:20} {i[7]:.4f}')
+        print(f'{i[0]:15} {i[1]:15} {i[2]:15} {i[3]:15} {i[4]:15} {i[5]:15} {i[6]:15} {i[7]:.4f}')
 
 def main():
     filename:str = 'META.csv'
