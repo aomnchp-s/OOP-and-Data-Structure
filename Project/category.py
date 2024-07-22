@@ -1,39 +1,24 @@
-import sqlite3
-from sqlite3 import Error
+from connect_db import ConnectDB
 
 class Category:
     def __init__(self, cnx) -> None:
         self._cnx = cnx
+        self._db = ConnectDB()
 
-    def create_table_category(self):
-        self._sql = """
-            CREATE TABLE IF NOT EXISTS category(
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                category text NOT NULL,
-                type text NOT NULL,
-                UNIQUE (category)
-            );
-        """
-        try:
-            c = self._cnx.cursor()
-            c.execute(self._sql)
-        except Error as err:
-            print(err)
-
-    def add_category(self,category, type):
-        self._category = category
-        self._type = type
-
-        self._sql = """
-            INSERT INTO category(category, type)
-            VALUES(?, ?)
-        """
-        params = (self._category, self._type)
-        try:
-            c = self._cnx.cursor()
-            c.execute(self._sql, params)
-            self._cnx.commit()
-        except Error as err:
-            print(err)
-
+    def check_exist_category(self, value):
+        # db = ConnectDB()
+        category = self._db.select_category(self._cnx)
+        self._category_list = [i[1] for i in category]
+        if value in self._category_list:
+            return True
+        elif value not in self._category_list:
+            return False
+        # return self._category_list
     
+    def add_category(self, category, type):
+        self._db.insert_category(self._cnx, category,type)
+    
+    def display_category(self):
+        category = self._db.select_category(self._cnx)
+        for i in category:
+            print(f'{i[1]}')

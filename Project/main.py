@@ -1,45 +1,25 @@
-import sqlite3
-from sqlite3 import Error
+from connect_db import ConnectDB
 from expense import Expense
 from category import Category
 
-def create_connection(database):
-    try:
-        cnx = sqlite3.connect(database)
-    except Error as err:
-        print(err)
-    return cnx
-
-def menuTracker(): 
-    while True:
-        description = input('\nEnter description (q to quit): ')
-        if description == 'q' or description == 'Q':
-            break
-
-        amount = float(input('Enter amount: '))
-        date = input('Enter date: ')
-
-        while True:
-            expense_type = input('Enter C:Cash T:Tranfer: ')
-            if expense_type == 't' or expense_type == 'T':
-                bank = input('Enter destinatiom bank: ')
-                category = input('Enter Category: ')
-                break
-            elif expense_type == 'c' or expense_type == 'c':
-                bank = None
-                category = input('Enter Category: ')
-                break
-        print(description, amount, date, expense_type, bank, category)
-
 def main():
-    database = 'expense_tracker.sqlite3'
     #create database
-    cnx = create_connection(database)
-
-    #init category table
+    db = ConnectDB()
+    cnx = db.create_connection()
+    #create table category
+    db.create_table_category()
+    #create table expense
+    db.create_table_expense()
+    #initail category
+    init_cate = [['food','expense'], ['travel','expense'], ['salary','income']]
     cate = Category(cnx)
-    cate.create_table_category()
-    cate.add_category('Food','1')
+    for i in init_cate:
+        is_exist = cate.check_exist_category(i[0])
+        if is_exist == False:
+            cate.add_category(i[0], i[1])
+        elif is_exist == True:
+            continue
+
 
     while True:
         print('\n----- Expense Tracker Menu -----')
@@ -52,9 +32,29 @@ def main():
         menu = input('Select a menu: ')
 
         if menu == '1':
-            menuTracker()
+            while True:
+                types = 'expense'
+                description = input('\nEnter description (q to quit): ')
+                if description.lower() == 'q':
+                    break
+
+                amount = input('Enter amount: ')
+                date = input('Enter date (YYYY-MM-DD): ')
+                expense_chanel = input('Enter chanel (C:Cash T:Tranfer): ')
+                if expense_chanel.lower() == 't':
+                    bank = input('Ente destination bank: ')
+                else: 
+                    bank = None
+                cate.display_category()
+                category = input('Enter category (q to quit): ')
+                if category.lower() == 'q':
+                    break
+
+                exp = Expense(cnx, description, amount, date, expense_chanel, bank, category, types)
+                exp.add_expense()
+
         elif menu == '2':
-            pass
+            type = 'income'
         elif menu == '3':
             pass
         elif menu == '4':
@@ -64,7 +64,6 @@ def main():
         elif menu == '0':
             print('Thank you.......')
             break
-
-
+      
 if __name__ == '__main__':
     main()
