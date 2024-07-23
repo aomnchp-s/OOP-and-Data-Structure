@@ -1,5 +1,6 @@
 from connect_db import ConnectDB
 from datetime import datetime
+from category import Category
 
 class Expense:
     def __init__(self,cnx, description, amount, date, expense_chanel, bank, category, types) -> None:
@@ -8,10 +9,11 @@ class Expense:
         self.date = date
         self.expense_chanel = expense_chanel
         self.bank = bank
-        self.category = category
         self.types = types
         self._cnx = cnx
         self._db = ConnectDB()
+        self.catex = Category(self._cnx)
+        self.category = category
 
     @property
     def description(self):
@@ -21,7 +23,9 @@ class Expense:
     def description(self, description_value):
         if not description_value:
             print('Description is empty!')
-        self._description = description_value
+            self._description = False
+        else:
+            self._description = description_value
     
     @property
     def amount(self):
@@ -32,11 +36,15 @@ class Expense:
         try:
             if not amount_value:
                 print('Amount is empty!')
+                self._amount = False
             elif float(amount_value) <= 0:
                 print('Amount must be gather than 0!')
-            self._amount = amount_value
+                self._amount = False
+            else:
+                self._amount = amount_value
         except:
             print('Invalid amount. Must be enter number!')
+            self._amount = False
 
     @property
     def date(self):
@@ -46,11 +54,13 @@ class Expense:
     def date(self, date_value):
         if not date_value:
             print('Date is empty!')
+            self._date = False
         try:
             datetime.strptime(date_value, "%Y-%m-%d")
             self._date = date_value
         except:
             print('Invalid date format. Please enter date in YYYY-MM-DD!')
+            self._date = False
 
     @property
     def expense_chanel(self):
@@ -60,7 +70,12 @@ class Expense:
     def expense_chanel(self, expense_chanel_value):
         if not expense_chanel_value:
             print('Expense chanel is empty!')
-        self._expense_chanel = expense_chanel_value
+            self._expense_chanel = False
+        elif expense_chanel_value == 'c' or expense_chanel_value == 't':
+            self._expense_chanel = expense_chanel_value
+        else:
+            print('Invalid chanel!')
+            self._expense_chanel = False         
     
     @property
     def bank(self):
@@ -78,9 +93,15 @@ class Expense:
     
     @category.setter
     def category(self, category_value):
+        chk = self.catex.check_exist_category(category_value)
         if not category_value:
             print('Category is empty!')
-        self._category = category_value
+            self._category = False
+        elif chk is False:
+            print("Category isn't exist!")
+            self._category = False
+        else:
+            self._category = category_value
 
     @property
     def types(self):

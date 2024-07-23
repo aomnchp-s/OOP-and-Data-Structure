@@ -17,9 +17,9 @@ class ConnectDB:
         sql = """
             CREATE TABLE IF NOT EXISTS category(
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                category text NOT NULL,
+                name text NOT NULL,
                 type text NOT NULL,
-                UNIQUE (category)
+                UNIQUE (name)
             );
         """
         try:
@@ -62,7 +62,7 @@ class ConnectDB:
 
     def insert_category(self, cnx, category, type):
         sql = """
-            INSERT INTO category(category, type)
+            INSERT INTO category(name, type)
             VALUES(?, ?)
         """
         params = (category, type)
@@ -84,3 +84,31 @@ class ConnectDB:
             return category
         except Error as err:
             print(err)
+
+    def delete_category(self, cnx, category_name):
+        sql = """
+            DELETE FROM category
+            WHERE name = ?
+        """
+        params = (category_name,)
+        try:
+            c = cnx.cursor()
+            c.execute(sql, params)
+            cnx.commit()
+        except Error as e:
+            print(e)
+
+    def update_category(self, cnx, category_name, category_edit):
+        sql = """
+            UPDATE category
+            SET name = (?)
+            WHERE name = (?)
+        """
+        params = (category_edit,category_name)
+        try:
+            c = cnx.cursor()
+            c.execute(sql, params)
+            cnx.commit()
+        except Error as e:
+            print(e)
+

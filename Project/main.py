@@ -42,23 +42,81 @@ def main():
                 date = input('Enter date (YYYY-MM-DD): ')
                 expense_chanel = input('Enter chanel (C:Cash T:Tranfer): ')
                 if expense_chanel.lower() == 't':
-                    bank = input('Ente destination bank: ')
+                    bank = input('Enter bank: ')
                 else: 
                     bank = None
                 cate.display_category()
-                category = input('Enter category (q to quit): ')
+                category = input('Enter category (q to quit to add category): ')
                 if category.lower() == 'q':
                     break
 
-                exp = Expense(cnx, description, amount, date, expense_chanel, bank, category, types)
-                exp.add_expense()
+                exp = Expense(cnx, description, amount, date, expense_chanel.lower(), bank, category, types)
+                if exp.description is False or exp.amount is False or exp.date is False or exp.expense_chanel is False or exp.category is False:
+                    print('Please try again!')
+                else:
+                    exp.add_expense()
 
         elif menu == '2':
-            type = 'income'
+            while True:
+                types = 'income'
+                description = input('\nEnter description (q to quit): ')
+                if description.lower() == 'q':
+                    break
+
+                amount = input('Enter amount: ')
+                date = input('Enter date (YYYY-MM-DD): ')
+                expense_chanel = input('Enter chanel (C:Cash T:Tranfer): ')
+                if expense_chanel.lower() == 't':
+                    bank = input('Enter bank: ')
+                else: 
+                    bank = None
+                cate.display_category()
+                category = input('Enter category (q to quit to add category): ')
+                if category.lower() == 'q':
+                    break
+
+                exp = Expense(cnx, description, amount, date, expense_chanel.lower(), bank, category, types)
+                if exp.description is False or exp.amount is False or exp.date is False or exp.expense_chanel is False or exp.category is False:
+                    print('Please try again!')
+                else:
+                    exp.add_expense()
+
         elif menu == '3':
             pass
+
         elif menu == '4':
-            pass
+            # cate.display_category()
+            while True:
+                cate.display_category()
+                action = input('A:Add U:Update D:Delete (q to quit): ')
+                if action.lower() == 'a':
+                    new_category = input('Enter new category: ')
+                    type_category = input('Enter type of category: ')
+                    chk_new = cate.check_exist_category(new_category.lower())
+                    if chk_new == False:
+                        cate.add_category(new_category.lower(), type_category.lower())
+                    elif is_exist == True:
+                        print('Category is exist!')
+                        continue
+                elif action.lower() == 'u':
+                    category_name = input('Enter category which update: ')
+                    if cate.check_exist_category(category_name.lower()) == True:
+                        category_edit = input('Enter category: ')
+                        if cate.check_exist_category(category_edit.lower()) == True:
+                            print('Category is exist!')
+                        else:
+                            cate.update_category(category_name.lower(), category_edit.lower())
+                    else:
+                        print('Category is not exist, canot update!')
+                elif action.lower() == 'd':
+                    category_name = input('Enter category which delete: ')
+                    if cate.check_exist_category(category_name.lower()) == True:
+                        cate.delete_category(category_name.lower())
+                    else:
+                        print('Category is not exist, canot delete!')
+                elif action.lower() == 'q':
+                    break
+
         elif menu == '5':
             pass
         elif menu == '0':
