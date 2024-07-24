@@ -112,3 +112,22 @@ class ConnectDB:
         except Error as e:
             print(e)
 
+    def inquiry_transaction(self, cnx, startDate, endDate):
+        sql = """
+            SELECT* FROM expense
+            WHERE date BETWEEN (?) AND (?)
+        """
+        params = (startDate,endDate)
+        try:
+            c = cnx.cursor()
+            c.execute(sql, params)
+            transections = c.fetchall()
+
+            if not transections:
+                return False
+            else:
+                return transections
+        except Error as err:
+            print(err)
+
+

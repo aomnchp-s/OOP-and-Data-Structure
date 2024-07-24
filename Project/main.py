@@ -1,6 +1,7 @@
 from connect_db import ConnectDB
 from expense import Expense
 from category import Category
+from transaction import Transaction
 
 def main():
     #create database
@@ -82,10 +83,19 @@ def main():
                     exp.add_expense()
 
         elif menu == '3':
-            pass
+            while True:
+                startDate = input('Enter start date (q to quit): ')
+                if startDate.lower() == 'q':
+                    break
+                endDate = input('Enter end date: ')
+                trans = Transaction(cnx,startDate, endDate)
+                if trans.startDate is False or trans.endDate is False:
+                    print('Please try again!')
+                else:
+                    trans.inquiry_transaction()
+                    trans.display_transaction()
 
         elif menu == '4':
-            # cate.display_category()
             while True:
                 cate.display_category()
                 action = input('A:Add U:Update D:Delete (q to quit): ')

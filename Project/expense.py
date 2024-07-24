@@ -113,3 +113,6 @@ class Expense:
         
     def add_expense(self):
         self._db.insert_expense(self._cnx, self.description,self.amount, self.date, self.expense_chanel, self.bank, self.category, self.types)
+
+    def expense_transaction(self):
+        print('expense_transaction')
