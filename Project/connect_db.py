@@ -116,8 +116,29 @@ class ConnectDB:
         sql = """
             SELECT* FROM expense
             WHERE date BETWEEN (?) AND (?)
+            ORDER BY date desc
         """
         params = (startDate,endDate)
+        try:
+            c = cnx.cursor()
+            c.execute(sql, params)
+            transections = c.fetchall()
+
+            if not transections:
+                return False
+            else:
+                return transections
+        except Error as err:
+            print(err)
+    
+    def group_transaction(self, cnx, startDate, endDate, types):
+        sql = """
+            SELECT count(id),category FROM expense
+            WHERE date BETWEEN (?) AND (?)
+            AND type = (?)
+            GROUP BY category;     
+        """
+        params = (startDate, endDate, types)
         try:
             c = cnx.cursor()
             c.execute(sql, params)

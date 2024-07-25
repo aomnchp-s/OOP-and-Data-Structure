@@ -2,6 +2,8 @@ from connect_db import ConnectDB
 from expense import Expense
 from category import Category
 from transaction import Transaction
+import matplotlib.pyplot as plt
+import numpy as np
 
 def main():
     #create database
@@ -28,7 +30,7 @@ def main():
         print('2. Income Record')
         print('3. Display Record')
         print('4. Add a New Category')
-        print('5. Report')
+        print('5. Report of Expense')
         print('0. Quit')
         menu = input('Select a menu: ')
 
@@ -128,7 +130,18 @@ def main():
                     break
 
         elif menu == '5':
-            pass
+            while True:
+                startDate = input('Enter start date (q to quit): ')
+                if startDate.lower() == 'q':
+                    break
+                endDate = input('Enter end date: ')
+                trans = Transaction(cnx,startDate, endDate)
+                if trans.startDate is False or trans.endDate is False:
+                    print('Please try again!')
+                else:
+                    trans.display_chart()
+                    break
+
         elif menu == '0':
             print('Thank you.......')
             break

@@ -1,5 +1,7 @@
 from connect_db import ConnectDB
 from datetime import datetime
+import matplotlib.pyplot as plt
+import numpy as np
 
 class Transaction:
     def __init__(self,cnx,startDate,endDate) -> None:
@@ -77,3 +79,30 @@ class Transaction:
             print(f'Expense: {self.count_expense()} {"":6} Income: {self.count_income()} {"":12} Balance: {self.count_income()-self.count_expense()}')
             print('-'*70)
             print()
+    
+    def chart(self):
+        types = 'expense'
+        chart = self._db.group_transaction(self._cnx, self.startDate, self.endDate, types)
+        # if chart == False:
+        #     print('Have no data in period!')
+        # else:
+        return chart
+        
+    def display_chart(self):
+        data = self.chart()
+        print(data)
+        if data is not None:
+            value = [i[0] for i in data]
+            keys = [i[1] for i in data]
+
+            pie = plt.pie(value,autopct='%1.1f%%', startangle=90)
+            plt.axis('equal')
+            plt.legend( loc = 'right', labels=keys)
+            plt.show()
+                    
+            # y = np.array(value)
+            # my_key = keys
+            # plt.pie(y, labels=my_key)
+            # plt.show()
+        else:
+            print('Have no data in period!')
