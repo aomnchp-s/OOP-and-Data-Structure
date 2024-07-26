@@ -38,12 +38,12 @@ class Expense:
                 print('Amount is empty!')
                 self._amount = False
             elif float(amount_value) <= 0:
-                print('Amount must be gather than 0!')
+                print('Amount must be greater than 0!')
                 self._amount = False
             else:
                 self._amount = amount_value
         except:
-            print('Invalid amount. Must be enter number!')
+            print('Invalid amount. Must enter a number!')
             self._amount = False
 
     @property
@@ -59,7 +59,7 @@ class Expense:
             datetime.strptime(date_value, "%Y-%m-%d")
             self._date = date_value
         except:
-            print('Invalid date format. Please enter date in YYYY-MM-DD!')
+            print('Invalid date format. Please enter the date in YYYY-MM-DD!')
             self._date = False
 
     @property
@@ -69,12 +69,12 @@ class Expense:
     @expense_chanel.setter
     def expense_chanel(self, expense_chanel_value):
         if not expense_chanel_value:
-            print('Expense chanel is empty!')
+            print('Channel is empty!')
             self._expense_chanel = False
         elif expense_chanel_value == 'c' or expense_chanel_value == 't':
             self._expense_chanel = expense_chanel_value
         else:
-            print('Invalid chanel!')
+            print('Invalid channel!')
             self._expense_chanel = False         
     
     @property
@@ -98,7 +98,7 @@ class Expense:
             print('Category is empty!')
             self._category = False
         elif chk is False:
-            print("Category isn't exist!")
+            print("Category doesn't exist!")
             self._category = False
         else:
             self._category = category_value

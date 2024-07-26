@@ -90,8 +90,10 @@ class Transaction:
         
     def display_chart(self):
         data = self.chart()
-        print(data)
-        if data is not None:
+        if data is None or data is False:
+            print('Have no data in period!')
+                    
+        else:
             value = [i[0] for i in data]
             keys = [i[1] for i in data]
 
@@ -99,10 +101,3 @@ class Transaction:
             plt.axis('equal')
             plt.legend( loc = 'right', labels=keys)
             plt.show()
-                    
-            # y = np.array(value)
-            # my_key = keys
-            # plt.pie(y, labels=my_key)
-            # plt.show()
-        else:
-            print('Have no data in period!')
